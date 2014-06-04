@@ -50,7 +50,7 @@ namespace lto {
 // magic to place command line in crash reports
 const int crashreporterBufferSize = 2000;
 static char crashreporterBuffer[crashreporterBufferSize];
-#if __MAC_OS_X_VERSION_MIN_REQUIRED >= 1070
+#if 0 && __MAC_OS_X_VERSION_MIN_REQUIRED >= 1070
 	#include <CrashReporterClient.h>
 	// hack until ld does not need to build on 10.6 anymore
     struct crashreporter_annotations_t gCRAnnotations 
@@ -91,6 +91,8 @@ void warning(const char* format, ...)
 		va_end(list);
 	}
 }
+
+const char ldVersionString[] = "@(#)PROGRAM:ld  PROJECT:ld64-236.3\n";
 
 void throwf(const char* format, ...)
 {
@@ -3077,7 +3079,6 @@ void Options::buildSearchPaths(int argc, const char* argv[])
 			addStandardLibraryDirectories = false;
 		else if ( strcmp(argv[i], "-v") == 0 ) {
 			fVerbose = true;
-			extern const char ldVersionString[];
 			fprintf(stderr, "%s", ldVersionString);
 			fprintf(stderr, "configured to support archs: %s\n", ALL_SUPPORTED_ARCHS);
 			 // if only -v specified, exit cleanly
@@ -4556,7 +4557,7 @@ void Options::checkForClassic(int argc, const char* argv[])
 	bool newLinker = false;
 	
 	// build command line buffer in case ld crashes
-#if __MAC_OS_X_VERSION_MIN_REQUIRED >= 1070
+#if 0 && __MAC_OS_X_VERSION_MIN_REQUIRED >= 1070
 	CRSetCrashLogMessage(crashreporterBuffer);
 #endif
 	const char* srcRoot = getenv("SRCROOT");

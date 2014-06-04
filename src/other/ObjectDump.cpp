@@ -990,12 +990,6 @@ void dumper::dumpFixup(const ld::Fixup* ref)
 		case ld::Fixup::kindStoreTargetAddressARM64PageOff12:
 			printf("ARM64 store 12-bit page offset of %s", referenceTargetAtomName(ref));
 			break;
-		case ld::Fixup::kindStoreTargetAddressARM64TLVPage21:
-			printf("ARM64 store 21-bit pcrel ADRP to TLV for %s", referenceTargetAtomName(ref));
-			break;
-		case ld::Fixup::kindStoreTargetAddressARM64TLVPageOff12:
-			printf("ARM64 store 12-bit page offset of TLV of %s", referenceTargetAtomName(ref));
-			break;
 		case ld::Fixup::kindStoreTargetAddressARM64GOTLoadPage21:
 			printf("ARM64 store 21-bit pcrel ADRP to GOT for %s", referenceTargetAtomName(ref));
 			break;

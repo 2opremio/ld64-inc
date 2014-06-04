@@ -32,7 +32,7 @@
 #include <assert.h>
 
 #include <vector>
-#include <unordered_set>
+#include <ext/hash_set>
 
 #include "configure.h"
 
@@ -821,7 +821,7 @@ struct CStringEquals
 	bool operator()(const char* left, const char* right) const { return (strcmp(left, right) == 0); }
 };
 
-typedef	std::unordered_set<const char*, ld::CStringHash, ld::CStringEquals>  CStringSet;
+typedef	__gnu_cxx::hash_set<const char*, __gnu_cxx::hash<const char*>, CStringEquals>  CStringSet;
 
 class Internal
 {
